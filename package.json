@@ -6,5 +6,4 @@
   { "type" : "git"
   , "url" : "http://github.com/isaacs/node-srand.git"
   }
-, "main":"./build/default/srand"
 }
