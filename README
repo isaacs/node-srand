@@ -1,1 +1,12 @@
 srand for node
+
+var srand = require('srand');
+
+// Seed the random
+srand.seed(Date.now());
+
+// Mimic JS Math.random
+srand.random();
+
+// C rand()
+srand.rand();
