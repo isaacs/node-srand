@@ -35,3 +35,5 @@ extern "C" void init (Handle<Object> target) {
   NODE_SET_METHOD(target, "seed", SRand);
   NODE_DEFINE_CONSTANT(target, RAND_MAX);
 }
+
+NODE_MODULE(srand, init)
