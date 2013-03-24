@@ -1,9 +1,10 @@
-{ "name" : "srand"
-, "author" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)"
-, "version" : "1.1.1"
-, "description" : "srand bindings for node - Seedable predictable pseudorandom number generator"
-, "repository" :
-  { "type" : "git"
-  , "url" : "http://github.com/isaacs/node-srand.git"
+{
+  "name": "srand",
+  "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
+  "version": "1.1.2",
+  "description": "srand bindings for node - Seedable predictable pseudorandom number generator",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/isaacs/node-srand.git"
   }
 }
