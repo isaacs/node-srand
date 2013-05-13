@@ -23,7 +23,7 @@ static Handle<Value> SRand (const Arguments& args) {
   if (args.Length() == 0) {
     return ThrowException(Exception::Error(String::New("Usage: srand(n)")));
   }
-  srand(args[0]->Int32Value());
+  srand(args[0]->Uint32Value());
   return Undefined();
 }
 
