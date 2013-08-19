@@ -6,5 +6,6 @@
   "repository": {
     "type": "git",
     "url": "http://github.com/isaacs/node-srand.git"
-  }
+  },
+  "license":"ISC"
 }
