@@ -3,6 +3,7 @@
 #include <v8.h>
 #include <nan.h>
 #include <node.h>
+#include <cstdlib>
 
 using namespace node;
 using namespace v8;
