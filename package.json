@@ -9,6 +9,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "nan": "^1.7.0"
+    "nan": "^2.2.0"
   }
 }
