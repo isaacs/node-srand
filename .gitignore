@@ -1,2 +1,5 @@
 .lock-wscript
 build/
+
+node_modules/
+.node-version
