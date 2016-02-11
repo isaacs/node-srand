@@ -3,6 +3,14 @@ node_js:
   - "0.11"
   - "0.12"
   - "5.0"
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 script:
   # TODO: Add simple spec test and remove the dummy tests.
   - node -e 'console.log(require("./index.js").rand())'
