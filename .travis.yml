@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "0.11"
+  - "0.12"
+  - "5.0"
+script:
+  # TODO: Add simple spec test and remove the dummy tests.
+  - node -e 'console.log(require("./index.js").rand())'
+  - node -e 'console.log(require("./index.js").random())'
+  - node -e 'console.log(require("./index.js").srand(10))'
+  - node -e 'console.log(require("./index.js").seed(10))'
+  - node -e 'console.log(require("./index.js").RAND_MAX)'
