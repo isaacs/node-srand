@@ -1,40 +1,32 @@
-
 #include <stdlib.h>
-#include <v8.h>
 #include <nan.h>
 #include <node.h>
 #include <cstdlib>
 
-using namespace node;
-using namespace v8;
-
-extern "C" void init (Handle<Object>);
-
-NAN_METHOD(Random) {
-  NanScope();
-  NanReturnValue(NanNew<Number>(rand()/((double)RAND_MAX + 1)));
+void Random(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  v8::Local<v8::Number> num = Nan::New(rand()/((double)RAND_MAX + 1));
+  info.GetReturnValue().Set(num);
 }
 
-NAN_METHOD(Rand) {
-  NanScope();
-  NanReturnValue(NanNew<Integer>(rand()));
+void Rand(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  v8::Local<v8::Integer> num = Nan::New(rand());
+  info.GetReturnValue().Set(num);
 }
 
-NAN_METHOD(SRand) {
-  NanScope();
-  if (args.Length() == 0) {
-    NanThrowError(Exception::Error(NanNew<String>("Usage: srand(n)")));
+void SRand(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  if (info.Length() == 0) {
+    Nan::ThrowError("Usage: srand(n)");
   }
-  srand(args[0]->Uint32Value());
-  NanReturnValue(NanUndefined());
+  srand(info[0]->Uint32Value());
+  info.GetReturnValue().SetUndefined();
 }
 
-extern "C" void init (Handle<Object> target) {
-  NODE_SET_METHOD(target, "random", Random);
-  NODE_SET_METHOD(target, "rand", Rand);
-  NODE_SET_METHOD(target, "srand", SRand);
-  NODE_SET_METHOD(target, "seed", SRand);
-  NODE_DEFINE_CONSTANT(target, RAND_MAX);
+void Init(v8::Local<v8::Object> exports) {
+  exports->Set(Nan::New("random").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(Random)->GetFunction());
+  exports->Set(Nan::New("rand").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(Rand)->GetFunction());
+  exports->Set(Nan::New("srand").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(SRand)->GetFunction());
+  exports->Set(Nan::New("seed").ToLocalChecked(), Nan::New<v8::FunctionTemplate>(SRand)->GetFunction());
+  exports->Set(Nan::New("RAND_MAX").ToLocalChecked(), Nan::New<v8::Integer>(RAND_MAX));
 }
 
-NODE_MODULE(srand, init)
+NODE_MODULE(srand, Init)
